@@ -25,7 +25,8 @@ echo "$file_name($nasel)"
 }
 
 $renames += $file_name
+Write-Host -ForegroundColor cyan $renames
 }
 
 Write-Host -ForegroundColor Yellow $renames
-sleep 5
+sleep 10
