@@ -125,8 +125,9 @@ return 1;
 for( bb = 0; bb <= seznamSouboru.size() -1; bb++ ) {
 obr = seznamSouboru[bb];
 
-// hleda tecku (rozdelovac od kocnce nazvu souboru)
-d_obr = obr.length(); // 25 ok
+// hleda tecku, najde posledni tecku v nazvu, kdyby jich bylo vic
+// tak se hodnota nalezeno_2 prepise az na posledni vyskyt tzn. rozdelovace
+d_obr = obr.length();
 
 for( cc = 0; cc <= d_obr -1; cc++ ) {
 znak = obr[cc];
@@ -180,7 +181,9 @@ cmd_2 += "del ";
 cmd_2 += '"';
 cmd_2 += obr;
 cmd_2 += '"';
-//cout<<cmd_2<<endl;
+cmd_2 += " ";
+cmd_2 += " || echo CHYBA PREVODU";
+
 cout<<poc_2<<") "<<obr<<" --> "<<out<<endl;
 cout<<"del "<<'"'<<obr<<'"'<<endl<<endl;
 poc_2++;
@@ -195,6 +198,8 @@ cmd_1 += " "; // jinak to neslo
 cmd_1 += '"';
 cmd_1 += out;
 cmd_1 += '"';
+cmd_1 += " ";
+cmd_1 += " || echo CHYBA PREVODU";
 
 // tisk co zrovna prevani ( unicode nevypisuje spravne ale spravne snim pracuje !)
 cout<<poc_1<<") "<<obr<<" --> "<<out<<endl<<endl;
@@ -207,4 +212,3 @@ system(cmd_1.c_str()); // prevede string na const char* !
 system("pause");
 return 0;
 }
-
